@@ -15,3 +15,4 @@ A library to wrap the typeahead.js and add the taggable functionality
 
 - grunt
 - grunt compile
+- grunt server
