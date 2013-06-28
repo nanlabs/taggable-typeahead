@@ -7,6 +7,7 @@
         init: function(opts) {
             opts = opts || {};
             opts.tags = opts.tags || [];
+            opts.focusClass = opts.focusClass || 'tag-cloud-focus';
 
             // Util variables
             var clean = new RegExp(',', 'g');
@@ -20,6 +21,13 @@
             // When container is click, focus the input element
             $container.click(function() {
                 $input.focus();
+            });
+
+            // Handlers for adding foucs class
+            $input.focus(function() { $container.addClass( opts.focusClass ); });
+            $input.blur(function() { 
+                clearInput();
+                $container.removeClass( opts.focusClass );
             });
 
             var addTag = function(value) {
@@ -89,6 +97,7 @@
             $.each(opts.tags, function(i, e) {
                 addTag(e);
             });
+
         },
         get: function() {
             return $( '.tag span', this.parents('.tag-cloud') ).map(function() {
