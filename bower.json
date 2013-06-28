@@ -1,0 +1,16 @@
+{
+  "name": "taggable-typeahead",
+  "version": "0.0.1",
+  "main": "src/taggable-typeahead.js",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "components"
+  ],
+  "dependencies": {
+    "typeahead.js": "~0.9.3"
+  },
+  "devDependencies": {
+    "jquery": "1.9"
+  }
+}
