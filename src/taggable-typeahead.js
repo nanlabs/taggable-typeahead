@@ -24,7 +24,8 @@
 
             var addTag = function(value) {
                 value = value.replace(clean, '');
-                if (value !== '') {
+                
+                if ( value !== '' && !containsValue(value)) {
                     var tag = $('<div class="tag"><span>' + value + '</span></div>');
                     var del = $('<a href="#">x</a>');
 
@@ -35,6 +36,8 @@
                     tag.append(del);
                     tag.insertBefore($typeahead);
                 }
+
+                clearInput();
             };
 
             var clearInput = function() {
@@ -43,32 +46,43 @@
                 $hint.val('');
             };
 
-            // // On click handler
-            // $input.blur(function() {
-            //     addTag(this.value);
-            //     this.value = '';
-            // });
+            var containsValue = function(value) {
+                var exists = false;
+
+                // Iterates over the existing tags
+                $.each ( $container.find('.tag span'), function(i, el) {
+                    if ($(el).text() === value) {
+                        exists = true;
+                        return; // Brearks the iteration
+                    }
+                });
+                return exists;
+            };
 
             // On keyup handler
             $input.keyup(function(e) {
-                var key = e.keyCode;
-                var isEnter = key === 13;
-                var isComma = key === 188;
-                var isBack = key === 8;
+                var key = e.keyCode,
+                    isEnter = key === 13,
+                    isComma = key === 188,
+                    isBack = key === 8;
                 
                 if (isEnter || isComma) {
                     addTag(this.value);
-                    clearInput();
-                } else if (isBack && this.value === '') {
+                } 
+
+                // Remove previous tag
+                if ( isBack && $input.data('delete-prev') ) {
+                    $input.data('delete-prev', false);
                     $container.find('.tag').last().remove();
                     clearInput();
                 }
-                // if (isBack && this.data('delete-prev')) { 
-                //     $(this).prev().remove(); 
-                //     $(this).data('delete-prev',false);
-                // } else if(isBack && this.value === '') {
-                //     $(this).data('delete-prev', true); 
-                // }
+                $input.data('delete-prev', (isBack && this.value === '') );
+            });
+
+            // When a suggested option is selected
+            $input.on('typeahead:selected', function(e, obj) {
+                addTag(obj.value);
+                $input.typeahead('setQuery', '');
             });
 
             // Add default tags
