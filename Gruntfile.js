@@ -51,6 +51,15 @@ module.exports = function(grunt) {
         src: 'src/<%= pkg.name %>.js',
         dest: 'dist/<%= pkg.name %>.min.js'
       }
+    },
+
+    connect: {
+      server: {
+        options: {
+          port: 9001,
+          keepalive: true
+        }
+      }
     }
 
   });
@@ -59,9 +68,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   // Default task(s).
   grunt.registerTask('default', ['jshint', 'watch']);
   grunt.registerTask('compile', ['uglify']);
+  grunt.registerTask('server', ['connect']);
 
 };
