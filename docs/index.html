@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width">
+
+        <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
+        <link href="css/taggable-typeahead.css" rel="stylesheet">
+        
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script src="vendor/typeahead.js/dist/typeahead.js"></script>
+
+        <script src="src/taggable-typeahead.js"></script>
+
+    </head>
+    <body class="span10">
+        
+        <label for="text-tags">Tags</label>
+        <input type="text" id="text-tags" class="tags" />
+        <em>Type multiple tags separated by comma</em>
+
+
+        <script type="text/javascript">
+
+            var $input = $('#text-tags');
+
+
+            $input.typeahead(
+                {
+                    prefetch: 'docs/data.json'
+                }
+            ).taggable();
+
+        </script>
+
+    </body>
+</html>
