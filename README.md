@@ -5,6 +5,8 @@ A library to wrap the typeahead.js and add the taggable functionality
 
 # Usage
 
+Demo: http://nan-labs.com/taggable-typeahead
+
 # Developers
 
 ## Setup

@@ -1,6 +1,6 @@
 {
   "name": "taggable-typeahead",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A library to wrap the typeahead.js and add the taggable functionality",
   "main": "index.js",
   "scripts": {
@@ -20,6 +20,7 @@
     "grunt-contrib-uglify": "~0.2.2",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-watch": "~0.4.4",
-    "grunt-contrib-connect": "~0.3.0"
+    "grunt-contrib-connect": "~0.3.0",
+    "grunt-contrib-copy": "~0.4.1"
   }
 }

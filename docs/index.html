@@ -11,32 +11,21 @@
         <meta name="viewport" content="width=device-width">
 
         <link href="http://twitter.github.io/bootstrap/assets/css/bootstrap.css" rel="stylesheet">
-        <link href="/css/taggable-typeahead.css" rel="stylesheet">
-        
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script src="/vendor/typeahead.js/dist/typeahead.js"></script>
 
-        <script src="/src/taggable-typeahead.js"></script>
+        <link href="taggable-typeahead.css" rel="stylesheet">
+        <script src="typeahead.min.js"></script>
+        <script src="taggable-typeahead.min.js"></script>
 
     </head>
     <body class="span10">
         
         <label for="text-tags">Tags</label>
         <input type="text" id="text-tags" class="tags" />
-        <em>Type multiple tags separated by comma</em>
-
 
         <script type="text/javascript">
-
             var $input = $('#text-tags');
-
-
-            $input.typeahead(
-                {
-                    prefetch: '/docs/data.json'
-                }
-            ).taggable();
-
+            $input.typeahead( { prefetch: 'data.json' } ).taggable();
         </script>
 
     </body>

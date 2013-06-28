@@ -60,6 +60,20 @@ module.exports = function(grunt) {
           keepalive: true
         }
       }
+    },
+
+    copy: {
+      dist: {
+        files: [
+          {expand: true, cwd: 'css/', src: ['**'], dest: 'dist/'},
+          {expand: true, cwd: 'vendor/typeahead.js/dist/', src: ['typeahead.min.js'], dest: 'dist/'}
+        ]
+      },
+      docs: {
+        files: [
+          {expand: true, cwd: 'dist/', src: ['**'], dest: 'docs/'}
+        ]
+      }
     }
 
   });
@@ -69,10 +83,12 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-copy');
 
-  // Default task(s).
-  grunt.registerTask('default', ['jshint', 'watch']);
-  grunt.registerTask('compile', ['uglify']);
+  // Tasks
+  grunt.registerTask('default', ['jshint']);
+  grunt.registerTask('watch', ['jshint', 'watch']);
+  grunt.registerTask('compile', ['uglify', 'copy:dist', 'copy:docs']);
   grunt.registerTask('server', ['connect']);
 
 };
