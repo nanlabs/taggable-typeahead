@@ -34,15 +34,15 @@
                 value = value.replace(clean, '');
                 
                 if ( value !== '' && !containsValue(value)) {
-                    var tag = $('<div class="tag"><span>' + value + '</span></div>');
-                    var del = $('<a href="#">x</a>');
+                    var $tag = $('<div class="tag"><span>' + value + '</span></div>'),
+                        $del = $('<i class="icon-remove icon-white"></i>');
 
-                    del.click(function() {
-                        del.parent().remove();
+                    $del.click(function() {
+                        $del.parent().remove();
                     });
                     
-                    tag.append(del);
-                    tag.insertBefore($typeahead);
+                    $tag.append($del);
+                    $tag.insertBefore($typeahead);
                 }
 
                 clearInput();
