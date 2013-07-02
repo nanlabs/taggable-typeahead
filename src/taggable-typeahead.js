@@ -18,6 +18,10 @@
                 $hint = $typeahead.find('.tt-hint'),
                 $container = $typeahead.parents('.tag-cloud');
 
+            var trigger = function(event, value) {
+                $input.trigger('tag:' + event, value);
+            };
+
             // When container is click, focus the input element
             $container.click(function() {
                 $input.focus();
@@ -39,10 +43,12 @@
 
                     $del.click(function() {
                         $del.parent().remove();
+                        trigger('removed', value);
                     });
                     
                     $tag.append($del);
                     $tag.insertBefore($typeahead);
+                    trigger('added', value);
                 }
 
                 clearInput();
@@ -81,7 +87,11 @@
                 // Remove previous tag
                 if ( isBack && $input.data('delete-prev') ) {
                     $input.data('delete-prev', false);
-                    $container.find('.tag').last().remove();
+
+                    var $t = $container.find('.tag').last();
+                    trigger('removed', $t.find('span').text());
+                    $t.remove();
+
                     clearInput();
                 }
                 $input.data('delete-prev', (isBack && this.value === '') );

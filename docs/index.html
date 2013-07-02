@@ -26,6 +26,14 @@
         <script type="text/javascript">
             var $input = $('#text-tags');
             $input.typeahead( { prefetch: 'data.json' } ).taggable();
+
+            var log = function(e, value) {
+                console.log(e);
+                console.log(value);
+            };
+
+            $input.on('tag:added', log);
+            $input.on('tag:removed', log);
         </script>
 
     </body>

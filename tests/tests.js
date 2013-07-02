@@ -1,7 +1,17 @@
 module("Basic Tests");
- 
-test("truthy", function() {
-	ok(true, "true is truthy");
-	equal(1, true, "1 is truthy");
-	notEqual(0, true, "0 is NOT truthy");
+
+test("Basic Initialization", function() {
+	var $c = $("#text-tags");
+	$c.typeahead({ local: ['qunit', 'mocha', 'jasmine'] }).taggable();
+	equal($c.length, 1, "Component initialized successfully!");
 });
+
+// test("Default Initialization", function() {
+	
+// 	var $c = $("#text-tags");
+// 	$c.typeahead({ local: ['qunit', 'mocha', 'jasmine'] }).taggable({ tags: ['test1', 'test2'] });
+// 	equal($c.length, 1, "Component initialized successfully!");
+
+// 	var $tags = $('.tag-cloud .tag', $c);
+// 	equal($tags.length, 2, "Default tags");
+// });
