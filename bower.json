@@ -11,6 +11,7 @@
     "typeahead.js": "~0.9.3"
   },
   "devDependencies": {
-    "jquery": "1.9"
+    "jquery": "1.9",
+    "qunit": "~1.11.0"
   }
 }

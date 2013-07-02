@@ -74,6 +74,10 @@ module.exports = function(grunt) {
           {expand: true, cwd: 'dist/', src: ['**'], dest: 'docs/'}
         ]
       }
+    },
+
+    qunit: {
+      all: ['tests/*.html']
     }
 
   });
@@ -84,10 +88,11 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-connect');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-qunit');
 
   // Tasks
-  grunt.registerTask('default', ['jshint']);
-  grunt.registerTask('watch', ['jshint', 'watch']);
+  grunt.registerTask('default', ['jshint', 'qunit']);
+  grunt.registerTask('watch', ['jshint', 'qunit', 'watch']);
   grunt.registerTask('compile', ['uglify', 'copy:dist', 'copy:docs']);
   grunt.registerTask('server', ['connect']);
 
