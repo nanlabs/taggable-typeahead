@@ -8,6 +8,8 @@
             opts = opts || {};
             opts.tags = opts.tags || [];
             opts.focusClass = opts.focusClass || 'tag-cloud-focus';
+            opts.valueKey = opts.valueKey || 'value';
+            opts.max = opts.max || 0;
 
             // Util variables
             var clean = new RegExp(',', 'g');
@@ -37,7 +39,8 @@
             var addTag = function(value) {
                 value = value.replace(clean, '');
                 
-                if ( value !== '' && !containsValue(value)) {
+                if ( value !== '' && !containsValue(value) && canAddMoreTags() ) {
+
                     var $tag = $('<div class="tag"><span>' + value + '</span></div>'),
                         $del = $('<i class="icon-remove icon-white"></i>');
 
@@ -60,11 +63,21 @@
                 $hint.val('');
             };
 
+            var getTags = function() {
+                return $container.find('.tag span');
+            };
+
+            // Verify if the tags max limit was reached
+            var canAddMoreTags = function () {
+                return (opts.max === 0 || getTags().length < opts.max);
+            };
+
             var containsValue = function(value) {
                 var exists = false;
 
                 // Iterates over the existing tags
-                $.each ( $container.find('.tag span'), function(i, el) {
+                $.each ( getTags(), function(i, el) {
+
                     if ($(el).text() === value) {
                         exists = true;
                         return; // Brearks the iteration
@@ -99,7 +112,7 @@
 
             // When a suggested option is selected
             $input.on('typeahead:selected', function(e, obj) {
-                addTag(obj.value);
+                addTag(obj[opts.valueKey]);
                 $input.typeahead('setQuery', '');
             });
 
