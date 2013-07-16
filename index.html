@@ -20,12 +20,25 @@
     </head>
     <body class="span10">
         
-        <label for="text-tags">Tags</label>
+        <label for="text-tags">Tags (Limit 5)</label>
         <input type="text" id="text-tags" class="tags" />
+
+        <br><br><br>
+
+        <label for="text-tags">Tags (Without limit)</label>
+        <input type="text" id="text-tags2" class="tags" />
 
         <script type="text/javascript">
             var $input = $('#text-tags');
-            $input.typeahead( { prefetch: 'data.json' } ).taggable();
+            $input.typeahead( { prefetch: 'data.json' } ).taggable( { max: 5 } );
+            var log = function(e, value) {
+                console.log(e);
+                console.log(value);
+            };
+            $input.on('tag:added', log);
+            $input.on('tag:removed', log);
+
+            $('#text-tags2').typeahead( { prefetch: 'data.json' } ).taggable();
         </script>
 
     </body>
