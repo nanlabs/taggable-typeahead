@@ -1,6 +1,6 @@
 {
   "name": "taggable-typeahead",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "A library to wrap the typeahead.js and add the taggable functionality",
   "main": "index.js",
   "scripts": {
