@@ -123,9 +123,11 @@
 
         },
         get: function() {
-            return $( '.tag span', this.parents('.tag-cloud') ).map(function() {
-                return $(this).text();
+            var tags = [];
+            $( '.tag span', this.parents('.tag-cloud') ).each(function() {
+                tags.push($(this).text());
             });
+            return tags;
         },
         clear: function() {
             $('div', this).remove();
