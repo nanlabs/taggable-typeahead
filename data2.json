@@ -1,0 +1,9 @@
+[
+	{ "label": "JavaScript", "usage": 200 },
+	{ "label": "Java", "usage": 21 },
+	{ "label": "CoffeeScript", "usage": 13 },
+	{ "label": "CSS", "usage": 23 },
+	{ "label": "LESS", "usage": 29 },
+	{ "label": "ActionScript", "usage": 432 },
+	{ "label": "AngularJS", "usage": 6 }
+]
