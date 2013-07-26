@@ -18,22 +18,21 @@
     <!-- Plugin Code -->
     <link href="taggable-typeahead.css" rel="stylesheet">
     <script src="typeahead.min.js"></script>
-    <script src="taggable-typeahead.min.js"></script>
+    <!-- <script src="taggable-typeahead.min.js"></script> -->
+    <script src="../src/taggable-typeahead.js"></script>
 
     <!-- Docs styles -->
     <link href="assets/css/docs.css" rel="stylesheet">
     <script type="text/javascript">
-        var engine = {
-            compile: function (template) {
-                var compiled = _.template(template);
-
-                return {
-                    render: function (context) {
-                        return compiled(context);
-                    }
-                };
-            }
-        };
+        $(function() {
+           _.compile = function(templ) {
+              var compiled = this.template(templ);
+              compiled.render = function(ctx) {
+                 return this(ctx);
+              }
+              return compiled;
+           };
+        });
     </script>
 
   </head>
@@ -57,9 +56,11 @@
         </div>
 
         <script>
+        $(function() {
           $('#example1').typeahead( { 
             prefetch: 'data.json'
           }).taggable();
+        });
         </script>
         <pre>
 $('example1').typeahead( { 
@@ -81,11 +82,13 @@ $('example1').typeahead( {
         </div>
 
         <script>
+        $(function() {
           $('#example2').typeahead( { 
             prefetch: 'data.json'
           }).taggable( { 
             max: 5 
           });
+        });
         </script>
         <pre>
 $('example2').typeahead( { 
@@ -107,22 +110,26 @@ $('example2').typeahead( {
         <p>Use typeahead template to display options with more information.</p>
 
         <div>
-          <label for="example3">Tags (Limit 5)</label>
+          <label for="example3">Tags with template</label>
           <input type="text" id="example3" class="tags" />
         </div>
 
         <script>
+        $(function() {
           $('#example3').typeahead( { 
             prefetch: 'data2.json',
+            valueKey: 'label',
             template: '<span><%=label%></span><i class="pull-right">(<%=usage%>)</i>',
-            engine: engine
-          }).taggable( { 
-            max: 5
+            engine: _
+          }).taggable({
+            valueKey: 'label'
           });
+        });
         </script>
         <pre>
 $('#example3').typeahead( { 
   prefetch: 'data2.json',
+  valueKey: 'label',
   template: '&lt;span&gt;&lt;%=label%&gt;&lt;/span&gt;&lt;i class="pull-right"&gt;(&lt;%=usage%&gt;)&lt;/i&gt;',
   engine: engine
 }).taggable( { 
