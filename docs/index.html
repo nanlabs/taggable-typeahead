@@ -18,8 +18,7 @@
     <!-- Plugin Code -->
     <link href="taggable-typeahead.css" rel="stylesheet">
     <script src="typeahead.min.js"></script>
-    <!-- <script src="taggable-typeahead.min.js"></script> -->
-    <script src="../src/taggable-typeahead.js"></script>
+    <script src="taggable-typeahead.min.js"></script>
 
     <!-- Docs styles -->
     <link href="assets/css/docs.css" rel="stylesheet">
@@ -133,7 +132,7 @@ $('#example3').typeahead( {
   template: '&lt;span&gt;&lt;%=label%&gt;&lt;/span&gt;&lt;i class="pull-right"&gt;(&lt;%=usage%&gt;)&lt;/i&gt;',
   engine: engine
 }).taggable( { 
-  max: 5 
+  valueKey: 'label'
 });</pre>
 
       </div>
