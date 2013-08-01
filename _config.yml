@@ -28,6 +28,8 @@ author :
 #
 production_url : http://nan-labs.com
 
+baseurl: /taggable-typeahead
+
 # All Jekyll-Bootstrap specific configurations are namespaced into this hash
 #
 JB :
