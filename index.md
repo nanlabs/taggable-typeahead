@@ -9,6 +9,7 @@ logoImg: logo-195x120.png
 section: project
 header: "Taggable Typeahead"
 lead-text: "A small library to wrap the Twitter typeahead.js component and add the taggable functionality."
+github-url: https://github.com/nanlabs/taggable-typeahead
 ---
 
 <div class="example">
