@@ -122,6 +122,7 @@
             });
 
         },
+
         get: function() {
             var tags = [];
             $( '.tag span', this.parents('.tag-cloud') ).each(function() {
@@ -129,8 +130,40 @@
             });
             return tags;
         },
+
         clear: function() {
             $('div', this).remove();
+        },
+
+        addTag: function(value) {
+            var clean = new RegExp(',', 'g');
+            value = value.replace(clean, '');
+
+            var tagList = $(this).taggable('get');
+
+            if ( value !== '' && tagList.indexOf(value) < 0 ) {
+
+                var $tag = $('<div class="tag"><span>' + value + '</span></div>'),
+                    $del = $('<i class="icon-remove icon-white"></i>'),
+                    $input = $(this),
+                    $typeahead = $input.parents('.twitter-typeahead'),
+                    $hint = $typeahead.find('.tt-hint');
+
+                $del.click(function() {
+                    $del.parent().remove();
+                    $input.trigger('tag:removed', value);
+                });
+                
+                $tag.append($del);
+                $tag.insertBefore($typeahead);
+                $input.trigger('tag:added', value);
+
+                // Clear input
+                this.value = '';
+                $input.val('');
+                $hint.val('');
+            }
+
         }
     };
     jQuery.fn.taggable = function(method) {
