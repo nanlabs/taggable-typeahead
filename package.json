@@ -1,6 +1,6 @@
 {
   "name": "taggable-typeahead",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "A small library to wrap the Twitter typeahead.js component and add the taggable functionality",
   "main": "index.js",
   "scripts": {

@@ -135,7 +135,12 @@
             $('div', this).remove();
         },
 
-        addTag: function(value) {
+        addTag: function(value, opts) {
+
+            // Options
+            if (!opts) { opts = {}; }
+            opts.silent = (opts.silent) ? true : false;
+
             var clean = new RegExp(',', 'g');
             value = value.replace(clean, '');
 
@@ -156,15 +161,18 @@
                 
                 $tag.append($del);
                 $tag.insertBefore($typeahead);
-                $input.trigger('tag:added', value);
+
+                if (!opts.silent) {
+                    $input.trigger('tag:added', value);
+                }
 
                 // Clear input
                 this.value = '';
                 $input.val('');
                 $hint.val('');
             }
-
         }
+
     };
     jQuery.fn.taggable = function(method) {
         if (methods[method]) {
