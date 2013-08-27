@@ -108,6 +108,19 @@
                     clearInput();
                 }
                 $input.data('delete-prev', (isBack && this.value === '') );
+                
+				// The following allows to paste text with commas as different keywords
+                var text = $input.val();
+                if(text.indexOf(",") != -1) {
+                    var parts = text.split(",");
+                    var total = parts.length; 
+                	$.each(parts, function(i, e) {
+                        if(i === total-1)
+                            $input.val(e);
+                        else 
+                            addTag(e);
+                	});
+                }
             });
 
             // When a suggested option is selected
