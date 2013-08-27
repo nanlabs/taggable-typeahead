@@ -115,7 +115,7 @@
                     var parts = text.split(",");
                     var total = parts.length; 
                 	$.each(parts, function(i, e) {
-                        if(i == total-1)
+                        if(i === total-1)
                             $input.val(e);
                         else 
                             addTag(e);
