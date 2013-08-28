@@ -111,15 +111,16 @@
                 
 				// The following allows to paste text with commas as different keywords
                 var text = $input.val();
-                if(text.indexOf(",") != -1) {
+                if(text.indexOf(",") !== -1) {
                     var parts = text.split(",");
                     var total = parts.length; 
-                	$.each(parts, function(i, e) {
-                        if(i === total-1)
+                    $.each(parts, function(i, e) {
+                        if(i === total-1) {
                             $input.val(e);
-                        else 
+                        } else {
                             addTag(e);
-                	});
+                        } 
+                    });
                 }
             });
 
@@ -146,28 +147,28 @@
 
         clear: function(opts) {
             opts = opts || {};
-        	var $input = $(this);
-        	$input.closest('.tag-cloud').find("div.tag").remove();
-        	if(!opts.silent) $input.trigger('tag:clear');
+            var $input = $(this);
+            $input.closest('.tag-cloud').find("div.tag").remove();
+            if(!opts.silent) { $input.trigger('tag:clear'); }
         },
         
         reset: function() {
-        	var $input = $(this);
-        	$input.taggable('clear', {silent: true});
-        	$input.taggable('addTags', $input.data('initial-tags'), {silent: true});
-        	$input.trigger('tag:reset');
+            var $input = $(this);
+            $input.taggable('clear', {silent: true});
+            $input.taggable('addTags', $input.data('initial-tags'), {silent: true});
+            $input.trigger('tag:reset');
         },
         
         save: function() {
-        	var $input = $(this);
-        	$input.data('initial-tags', $input.taggable('get') || []);
+            var $input = $(this);
+            $input.data('initial-tags', $input.taggable('get') || []);
         },
         
         addTags: function(values, opts) {
-        	var self = $(this);
-        	 $.each(values, function(i, e) {
-        		 self.taggable('addTag',e, opts);
-             });
+            var self = $(this);
+            $.each(values, function(i, e) {
+                self.taggable('addTag',e, opts);
+            });
         },
 
         addTag: function(value, opts) {
