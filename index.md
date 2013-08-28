@@ -66,96 +66,99 @@ github-url: https://github.com/nanlabs/taggable-typeahead
 
 <div class="example">
 
-<h3>Interacting by code</h3>
-<p>Adding and removing tags using Javascipt.</p>
+	<h3>Interacting by code</h3>
+	<p>Adding and removing tags using Javascipt.</p>
 
-<div>
-  <button id="btnAddTag">Add one tag ("Hello World")</button>
-  <button id="btnAddTags">Add many tags ("Hello" and "World")</button>
-  <button id="btnClear">Clear the tags</button>
-</div>
+	<div>
+	  <button id="btnAddTag">Add one tag ("Hello World")</button>
+	  <button id="btnAddTags">Add many tags ("Hello" and "World")</button>
+	  <button id="btnClear">Clear the tags</button>
+	</div>
 
-<div>
-  <label for="example4">Tags</label>
-  <input type="text" id="example4" class="tags" />
-</div>
+	<div>
+	  <label for="example4">Tags</label>
+	  <input type="text" id="example4" class="tags" />
+	</div>
 
-<script>
-$(function() {
-  $('#example4').typeahead( { 
-    prefetch: 'data.json'
-  }).taggable();
-});
+	<script>
+	$(function() {
+	  $('#example4').typeahead( { 
+	    prefetch: 'data.json'
+	  }).taggable();
+	});
 
-$("#btnAddTag").click(function() {
-  $("#example4").taggable("addTag", "Hello World");
-});
-$("#btnAddTags").click(function() {
-  $("#example4").taggable("addTags", ["Hello", "World"]);
-});
-$("#btnClear").click(function() {
-  $("#example4").taggable("clear");
-});
-</script>
-<pre>
-$('example4').typeahead( { 
-prefetch: 'data.json'
-}).taggable();</pre>
+	$("#btnAddTag").click(function() {
+	  $("#example4").taggable("addTag", "Hello World");
+	});
+	$("#btnAddTags").click(function() {
+	  $("#example4").taggable("addTags", ["Hello", "World"]);
+	});
+	$("#btnClear").click(function() {
+	  $("#example4").taggable("clear");
+	});
+	</script>
+	<pre>
+	$('example4').typeahead( { 
+		prefetch: 'data.json'
+	}).taggable();</pre>
 
-<pre>
-$("#btnAddTag").click(function() {
-$("#example4").taggable("addTag", "Hello World");
-});
-$("#btnAddTags").click(function() {
-$("#example4").taggable("addTags", ["Hello", "World"]);
-});
-$("#btnClear").click(function() {
-$("#example4").taggable("clear");
-});</pre>
+	<pre>
+	$("#btnAddTag").click(function() {
+		$("#example4").taggable("addTag", "Hello World");
+	});
+	
+	$("#btnAddTags").click(function() {
+		$("#example4").taggable("addTags", ["Hello", "World"]);
+	});
+	
+	$("#btnClear").click(function() {
+		$("#example4").taggable("clear");
+	});</pre>
 
 </div>
 
 <div class="example">
 
-<h3>Saving and loading state</h3>
-<p>Define initial tags, save current state and load saved state.</p>
+	<h3>Saving and loading state</h3>
+	<p>Define initial tags, save current state and load saved state.</p>
 
-<div>
-  <button id="btnReset">Reset (load saved state)</button>
-  <button id="btnSave">Save new state</button>
-</div>
+	<div>
+	  <button id="btnReset">Reset (load saved state)</button>
+	  <button id="btnSave">Save new state</button>
+	</div>
 
-<div>
-  <label for="example5">Tags</label>
-  <input type="text" id="example5" class="tags" />
-</div>
+	<div>
+	  <label for="example5">Tags</label>
+	  <input type="text" id="example5" class="tags" />
+	</div>
 
-<script>
-$(function() {
-  $('#example5').typeahead( { 
-    prefetch: 'data.json'
-  }).taggable({tags: ['Initial', 'State']});
-});
+	<script>
+	$(function() {
+	  $('#example5').typeahead( { 
+	    prefetch: 'data.json'
+	  }).taggable({tags: ['Initial', 'State']});
+	});
 
-$("#btnReset").click(function() {
-  $("#example5").taggable("reset");
-});
-$("#btnSave").click(function() {
-  $("#example5").taggable("save");
-});
-</script>
-<pre>
-$('#example5').typeahead( { 
-prefetch: 'data.json'
-}).taggable({tags: ['Initial', 'State']});</pre>
+	$("#btnReset").click(function() {
+	  $("#example5").taggable("reset");
+	});
+	$("#btnSave").click(function() {
+	  $("#example5").taggable("save");
+	});
+	</script>
+	<pre>
+	$('#example5').typeahead( { 
+	prefetch: 'data.json'
+	}).taggable({tags: ['Initial', 'State']});</pre>
 
-<pre>
-$("#btnReset").click(function() {
-$("#example5").taggable("reset");
-});
-$("#btnSave").click(function() {
-$("#example5").taggable("save");
-});</pre>
+	<pre>
+	$("#btnReset").click(function() {
+		$("#example5").taggable("reset");
+	});
+
+	$("#btnSave").click(function() {
+		$("#example5").taggable("save");
+	});</pre>
 
 </div>
 
