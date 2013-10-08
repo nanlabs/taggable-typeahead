@@ -91,11 +91,12 @@
                 var key = e.keyCode,
                     isEnter = key === 13,
                     isComma = key === 188,
-                    isBack = key === 8;
+                    isBack = key === 8,
+                    isTab = key === 9;
                 
-                if (isEnter || isComma) {
+                if (isEnter || isComma || isTab) {
                     addTag(this.value);
-                } 
+                }
 
                 // Remove previous tag
                 if ( isBack && $input.data('delete-prev') ) {
