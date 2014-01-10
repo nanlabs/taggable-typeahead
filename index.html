@@ -22,6 +22,9 @@
    
     <!-- Docs styles -->
     <link href="assets/css/docs.css" rel="stylesheet">
+    <!-- NaN Labs official site css -->
+    <link rel="stylesheet" type="text/css" href="/assets/themes/nanlabs/css/dist.css">
+
     <script type="text/javascript">
         $(function() {
            _.compile = function(templ) {
@@ -41,13 +44,18 @@
 
     <div class="container">
 
-      <header>
-        <a href="http://nan-labs.com/" target="_blank">
-          <img src="http://nan-labs.com/assets/themes/nanlabs/img/logo-195x120.png" />
-        </a>
-        <h1 class="pull-right">Taggable Typeahead</h1>
+      <header class="row-fluid header-page clearfix"> 
+          <a href="/index.html" title="Home"> 
+              <div class="span4 logo pagination-centered">
+                  <img src="/assets/themes/nanlabs/img/logo-195x120.png" alt="NaN Labs Logo">
+              </div>
+          </a>
+          <div class="span8 box hidden-phone">
+              <h1 class="span11">well-crafted software</h1>
+          </div>
       </header>
       
+      <h1>Taggable Typeahead</h1>
       <p class="lead">A small library to wrap the Twitter typeahead.js component and add the taggable functionality.</p>
 
       
